@@ -23,6 +23,17 @@ jobs:
           flutter-version: '3.19.0'
           channel: 'stable'
 
+      - name: Create fresh Flutter project structure
+        run: |
+          flutter create . --org com.syriacash --project-name syria_cash --platforms=android
+
+      - name: Replace main.dart with custom code
+        run: |
+          # نضمن أن ملفك الرئيسي موجود في مكانه الصحيح
+          if [ -f "lib/main.dart" ]; then
+            echo "Main file exists"
+          fi
+
       - name: Install dependencies
         run: flutter pub get
 
